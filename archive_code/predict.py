@@ -8,7 +8,7 @@ import albumentations as A
 import torch.nn.functional as F
 from albumentations.pytorch import ToTensorV2
 
-from Detection_Model.train import FocalLoss, DiceLoss, get_class_weights, TverskyLoss
+from train import FocalLoss, DiceLoss, get_class_weights, TverskyLoss
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
 
