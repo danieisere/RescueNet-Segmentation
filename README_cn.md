@@ -101,7 +101,7 @@ RescueNet-Segmentation/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/RescueNet-Segmentation.git
+git clone https://github.com/danieisere/RescueNet-Segmentation.git
 cd RescueNet-Segmentation
 
 # 安装依赖
@@ -397,13 +397,13 @@ MODEL_CONFIG = {
   title = {RescueNet-Segmentation: Building Damage Assessment via Semantic Segmentation},
   author = {{RescueNet-Segmentation Contributors}},
   year = {2026},
-  url = {https://github.com/yourusername/RescueNet-Segmentation},
+  url = {https://github.com/danieisere/RescueNet-Segmentation},
   note = {Academic Research License}
 }
 ```
 
 或者使用纯文本格式：
-> 本工作使用了 RescueNet-Segmentation 项目的代码（https://github.com/yourusername/RescueNet-Segmentation），采用学术研究许可证。
+> 本工作使用了 RescueNet-Segmentation 项目的代码（https://github.com/danieisere/RescueNet-Segmentation），采用学术研究许可证。
 
 ---
 
@@ -411,7 +411,7 @@ MODEL_CONFIG = {
 
 如有问题、建议或合作意向：
 
-- 📬 提交 [Issue](https://github.com/yourusername/RescueNet-Segmentation/issues)
+- 📬 提交 [Issue](https://github.com/danieisere/RescueNet-Segmentation/issues)
 - 📧 直接联系作者
 
 ---

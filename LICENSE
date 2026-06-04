@@ -44,13 +44,13 @@ Any publication, presentation, or derivative work that uses this Software or por
   title = {RescueNet-Segmentation: Building Damage Assessment via Semantic Segmentation},
   author = {{RescueNet-Segmentation Contributors}},
   year = {2026},
-  url = {https://github.com/yourusername/RescueNet-Segmentation},
+  url = {https://github.com/danieisere/RescueNet-Segmentation},
   note = {Academic Research License}
 }
 ```
 
 Or in plain text:
-> This work uses code from the RescueNet-Segmentation project (https://github.com/yourusername/RescueNet-Segmentation), licensed under the Academic Research License.
+> This work uses code from the RescueNet-Segmentation project (https://github.com/danieisere/RescueNet-Segmentation), licensed under the Academic Research License.
 
 ---
 
@@ -105,9 +105,9 @@ The RescueNet dataset used in this project may have its own licensing terms. Use
 
 For questions about this license, commercial licensing inquiries, or collaboration opportunities:
 
-- 📧 Email: [Your Email Address]
-- 🌐 GitHub: https://github.com/yourusername/RescueNet-Segmentation
-- 📝 Issues: https://github.com/yourusername/RescueNet-Segmentation/issues
+- 📧 Email: [danielzheng0301@gmail.com]
+- 🌐 GitHub: https://github.com/danieisere/RescueNet-Segmentation
+- 📝 Issues: https://github.com/danieisere/RescueNet-Segmentation/issues
 
 ---
 

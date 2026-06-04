@@ -101,7 +101,7 @@ RescueNet-Segmentation/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/RescueNet-Segmentation.git
+git clone https://github.com/danieisere/RescueNet-Segmentation.git
 cd RescueNet-Segmentation
 
 # Install dependencies
@@ -397,7 +397,7 @@ If you use this software in your research, please cite:
   title = {RescueNet-Segmentation: Building Damage Assessment via Semantic Segmentation},
   author = {{RescueNet-Segmentation Contributors}},
   year = {2026},
-  url = {https://github.com/yourusername/RescueNet-Segmentation},
+  url = {https://github.com/danieisere/RescueNet-Segmentation},
   note = {Academic Research License}
 }
 ```
@@ -408,7 +408,7 @@ If you use this software in your research, please cite:
 
 For questions, suggestions, or collaborations:
 
-- 📬 Submit an [Issue](https://github.com/yourusername/RescueNet-Segmentation/issues)
+- 📬 Submit an [Issue](https://github.com/danieisere/RescueNet-Segmentation/issues)
 - 📧 Contact the author directly
 
 ---
