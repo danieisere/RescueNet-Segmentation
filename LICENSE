@@ -1,0 +1,144 @@
+# Academic Research License
+
+**Project**: RescueNet-Segmentation  
+**Version**: 1.0  
+**Date**: 2026-06-04  
+
+---
+
+## Copyright
+
+Copyright (c) 2026 RescueNet-Segmentation Project Authors.  
+All rights reserved.
+
+---
+
+## Terms and Conditions
+
+### 1. Permission Grant
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software for **academic and research purposes only**, subject to the following conditions:
+
+#### Allowed Uses:
+- ✅ Academic research and publications
+- ✅ Educational purposes (teaching, learning, student projects)
+- ✅ Non-commercial scientific research
+- ✅ Modification and adaptation for research purposes
+- ✅ Distribution of modified versions for academic use
+
+#### Prohibited Uses:
+- ❌ Commercial use or profit-making activities
+- ❌ Military or defense applications
+- ❌ Use in production systems without explicit permission
+- ❌ Redistribution as part of commercial products or services
+- ❌ Patent applications based on this software
+
+---
+
+### 2. Attribution Requirement
+
+Any publication, presentation, or derivative work that uses this Software or portions thereof must include appropriate attribution:
+
+```bibtex
+@software{rescuenet_segmentation,
+  title = {RescueNet-Segmentation: Building Damage Assessment via Semantic Segmentation},
+  author = {{RescueNet-Segmentation Contributors}},
+  year = {2026},
+  url = {https://github.com/yourusername/RescueNet-Segmentation},
+  note = {Academic Research License}
+}
+```
+
+Or in plain text:
+> This work uses code from the RescueNet-Segmentation project (https://github.com/yourusername/RescueNet-Segmentation), licensed under the Academic Research License.
+
+---
+
+### 3. Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+### 4. No Liability
+
+The authors and copyright holders shall not be liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising from the use of this software, including but not limited to:
+- Data loss or corruption
+- System failures or crashes
+- Incorrect results or predictions
+- Any other damages related to software usage
+
+---
+
+### 5. Derivative Works
+
+If you create derivative works based on this Software:
+1. You must clearly indicate that it is a modified version
+2. You must retain this license and copyright notice
+3. You must provide clear attribution to the original authors
+4. Derivative works must also be distributed under this same Academic Research License
+
+---
+
+### 6. Third-Party Dependencies
+
+This project uses several third-party libraries and frameworks:
+- **PyTorch**: BSD-style license
+- **OpenCV**: Apache License 2.0
+- **Albumentations**: MIT License
+- **Other dependencies**: See `requirements.txt` for complete list
+
+Please review and comply with the licenses of all third-party dependencies when using this software.
+
+---
+
+### 7. Dataset License
+
+The RescueNet dataset used in this project may have its own licensing terms. Users are responsible for:
+1. Obtaining proper authorization to use the dataset
+2. Complying with the dataset's specific license requirements
+3. Providing appropriate citations for the dataset in publications
+
+---
+
+### 8. Contact Information
+
+For questions about this license, commercial licensing inquiries, or collaboration opportunities:
+
+- 📧 Email: [Your Email Address]
+- 🌐 GitHub: https://github.com/yourusername/RescueNet-Segmentation
+- 📝 Issues: https://github.com/yourusername/RescueNet-Segmentation/issues
+
+---
+
+### 9. License Updates
+
+The authors reserve the right to update this license. Updated versions will be posted to the project repository. Continued use of the software after license updates constitutes acceptance of the new terms.
+
+---
+
+## Summary
+
+**You CAN:**
+- Use this software for academic research
+- Modify the code for your research needs
+- Share modified versions with other researchers
+- Cite this work in your publications
+
+**You CANNOT:**
+- Use this software for commercial purposes
+- Apply for patents based on this code
+- Use it in military or defense applications
+- Remove copyright notices or license terms
+
+**You MUST:**
+- Provide proper attribution in publications
+- Include this license with any distribution
+- Cite the project appropriately
+- Comply with third-party dependency licenses
+
+---
+
+*By using this software, you agree to be bound by these terms and conditions.*
+
+**Last Updated**: June 4, 2026

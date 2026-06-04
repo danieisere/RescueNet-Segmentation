@@ -1,182 +1,430 @@
-# 图像语义分割研究项目
+<div align="center">
 
-基于RescueNet数据集的建筑物损坏程度语义分割研究，支持UNet、PSPNet和DeepLabV3三种模型。
+# 🏗️ RescueNet-Segmentation
 
-## 项目结构
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue?logo=python)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-1.8%2B-red?logo=pytorch)](https://pytorch.org/)
+[![License](https://img.shields.io/badge/License-Academic-green)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Research-yellow)]()
+
+[📖 中文文档](README_cn.md) | [🌍 English](README.md)
+
+</div>
+
+---
+
+## 📋 Overview
+
+**RescueNet-Segmentation** is a semantic segmentation research project for building damage assessment based on the RescueNet dataset. This project implements and compares three state-of-the-art deep learning models: **UNet**, **PSPNet**, and **DeepLabV3** for disaster scene understanding.
+
+### 🎯 Key Features
+
+- ✅ **Multi-Model Comparison**: UNet, PSPNet, DeepLabV3 with ResNet18 backbone
+- ✅ **Modular Architecture**: Clean separation of models, training, and evaluation
+- ✅ **Advanced Loss Functions**: Focal Loss + Tversky Loss for class imbalance
+- ✅ **Complete Pipeline**: Training → Testing → Inference → Visualization
+- ✅ **Configuration-Driven**: Centralized config system for easy customization
+- ✅ **Production-Ready**: Well-documented and extensible codebase
+
+### 🏛️ Application Scenarios
+
+- Post-disaster building damage assessment
+- Emergency response planning
+- Urban resilience analysis
+- Remote sensing image interpretation
+
+---
+
+## 📁 Project Structure
 
 ```
-.
-├── data/                    # 数据目录
-│   └── raw/                # 原始数据集
-│       ├── train/          # 训练集
-│       └── test/           # 测试集
-├── models/                 # 模型定义
-│   ├── __init__.py        # 模型接口
-│   ├── unet.py            # UNet模型
-│   ├── pspnet.py          # PSPNet模型
-│   ├── deeplabv3.py       # DeepLabV3模型
-│   └── layers/            # 自定义网络层
-│       ├── conv_blocks.py # 基础卷积模块
-│       ├── attention.py   # 注意力机制
-│       ├── pyramid.py     # 金字塔模块
-│       └── aspp.py        # ASPP模块
-├── modules/               # 核心功能模块
-│   ├── datasets.py        # 数据集类
-│   ├── dataloaders.py     # 数据加载器
-│   ├── trainer.py         # 训练逻辑
-│   ├── evaluator.py       # 评估逻辑
-│   ├── metrics.py         # 评估指标
-│   ├── loss.py            # 损失函数
-│   ├── visualization.py   # 可视化
-│   └── utils.py           # 工具函数
-├── configs/               # 配置文件
-│   ├── dataset_config.py  # 数据集配置
-│   ├── model_config.py    # 模型配置
-│   └── training_config.py # 训练配置
-├── runs/                  # 训练输出（模型权重）
-├── output/                # 预测结果输出
-├── train.py              # 训练入口
-├── test.py               # 测试入口
-├── inference.py          # 推理入口
-└── config.py             # 全局配置
+RescueNet-Segmentation/
+├── 📊 RescueNet/                 # Dataset
+│   ├── train/
+│   │   ├── train-org-img/        # 100 training images
+│   │   └── train-label-img/      # 100 training labels
+│   └── test/
+│       ├── test-org-img/         # 1 test image
+│       └── test-label-img/       # 1 test label
+│
+├── 🧠 models/                    # Model definitions
+│   ├── unet.py                   # UNet with Custom Pyramid Module
+│   ├── pspnet.py                 # PSPNet with Scene Parsing
+│   ├── deeplabv3.py              # DeepLabV3 with ASPP
+│   └── layers/                   # Custom network layers
+│       ├── conv_blocks.py        # Basic convolution blocks
+│       ├── attention.py          # SE Attention mechanism
+│       ├── pyramid.py            # Pyramid modules
+│       └── aspp.py               # Atrous Spatial Pyramid Pooling
+│
+├── ⚙️ modules/                   # Core functionality
+│   ├── datasets.py               # Dataset loader
+│   ├── dataloaders.py            # DataLoader factory
+│   ├── trainer.py                # Training engine
+│   ├── evaluator.py              # Evaluation logic
+│   ├── metrics.py                # Performance metrics
+│   ├── loss.py                   # Loss functions
+│   ├── visualization.py          # Result visualization
+│   └── utils.py                  # Utility functions
+│
+├── 📝 configs/                   # Configuration files
+│   ├── dataset_config.py         # Dataset paths & params
+│   ├── model_config.py           # Model hyperparameters
+│   └── training_config.py        # Training settings
+│
+├── 🚀 Entry Points
+│   ├── train.py                  # Train all models
+│   ├── test.py                   # Evaluate models
+│   └── inference.py              # Single image prediction
+│
+├── 📦 runs/                      # Trained model weights
+├── 🖼️ output/                    # Prediction results
+└── 📚 Documentation
+    ├── README.md                 # English documentation
+    ├── README_cn.md              # Chinese documentation
+    ├── QUICKSTART.md             # Quick start guide
+    ├── PROJECT_STRUCTURE.md      # Architecture details
+    └── MIGRATION_GUIDE.md        # Migration guide
 ```
 
-## 环境要求
+---
 
-- Python 3.7+
-- PyTorch 1.8+
-- torchvision
-- OpenCV
-- albumentations
-- matplotlib
-- tqdm
-- tabulate
+## 🛠️ Installation
 
-安装依赖：
+### Prerequisites
+
+- Python 3.7 or higher
+- PyTorch 1.8 or higher
+- CUDA-compatible GPU (recommended for training)
+
+### Quick Install
+
 ```bash
-pip install torch torchvision opencv-python albumentations matplotlib tqdm tabulate
+# Clone the repository
+git clone https://github.com/yourusername/RescueNet-Segmentation.git
+cd RescueNet-Segmentation
+
+# Install dependencies
+pip install torch torchvision opencv-python albumentations matplotlib tqdm tabulate Pillow
 ```
 
-## 数据集准备
+### Verify Installation
 
-本项目使用RescueNet数据集，请按以下结构组织数据：
+```bash
+# Verify dataset configuration
+python verify_dataset.py
+
+# Run comprehensive tests
+python verify_refactoring.py
+```
+
+---
+
+## 📊 Dataset
+
+This project uses the **RescueNet** dataset for building damage segmentation.
+
+### Dataset Structure
 
 ```
-data/raw/
+RescueNet/
 ├── train/
-│   ├── train-org-img/     # 训练图像
-│   └── train-label-img/   # 训练标签
+│   ├── train-org-img/     # Original images (.jpg)
+│   └── train-label-img/   # Segmentation masks (_lab.png)
 └── test/
-    ├── test-org-img/      # 测试图像
-    └── test-label-img/    # 测试标签
+    ├── test-org-img/      # Test images
+    └── test-label-img/    # Test masks
 ```
 
-**注意**: RescueNet数据集的命名规则为 `xxx.jpg` → `xxx_lab.png`
+### Class Distribution
 
-## 使用方法
+| ID | Class Name | Color | Description |
+|----|------------|-------|-------------|
+| 0 | Background | ⚫ Black | Non-building areas |
+| 1 | Water | 🔵 Blue | Water bodies |
+| 2 | Building - No Damage | ⚪ Light Gray | Intact buildings |
+| 3 | Building - Minor Damage | 🟡 Yellow | Slight structural damage |
+| 4 | Building - Major Damage | 🟠 Orange | Severe structural damage |
+| 5 | Building - Destroyed | 🔴 Red | Completely collapsed |
+| 6 | Vehicle | 🔷 Cyan | Cars and trucks |
+| 7 | Road - Clear | 🟣 Purple-Gray | Passable roads |
+| 8 | Road - Blocked | 🟪 Dark Purple | Impassable roads |
+| 9 | Tree | 🟢 Green | Vegetation |
+| 10 | Pool | 💙 Sky Blue | Swimming pools |
 
-### 1. 训练模型
+**Note**: File naming convention: `xxx.jpg` → `xxx_lab.png`
+
+---
+
+## 🚀 Quick Start
+
+### 1️⃣ Training
+
+Train all three models simultaneously:
 
 ```bash
 python train.py
 ```
 
-这将同时训练UNet、PSPNet和DeepLabV3三个模型，并绘制损失曲线。
+**What it does:**
+- Trains UNet, PSPNet, and DeepLabV3
+- Saves model weights to `runs/` directory
+- Plots and saves training loss curves
+- Displays real-time progress
 
-### 2. 测试评估
+### 2️⃣ Testing & Evaluation
+
+Evaluate trained models on test set:
 
 ```bash
 python test.py
 ```
 
-对所有已训练的模型进行评估，输出对比表格。
+**Output:**
+- Performance comparison table
+- Metrics: Pixel Accuracy, mIoU, Focal Loss, Dice Loss
+- Focus on building damage classes (2, 3, 4, 5)
 
-### 3. 单张图像推理
+### 3️⃣ Inference
+
+Predict on a single image:
 
 ```bash
-python inference.py --model unet --weights ./runs/unet_final.pth --image path/to/image.jpg [--label path/to/label.png]
+python inference.py --model unet --weights ./runs/unet_final.pth --image path/to/image.jpg
 ```
 
-参数说明：
-- `--model`: 模型类型 (unet/pspnet/deeplabv3)
-- `--weights`: 模型权重文件路径
-- `--image`: 输入图像路径
-- `--label`: 标签图像路径（可选，用于计算评估指标）
-- `--output`: 输出文件名（默认: output.png）
+**Optional parameters:**
+```bash
+# With ground truth label for metric calculation
+python inference.py \
+    --model pspnet \
+    --weights ./runs/pspnet_final.pth \
+    --image test.jpg \
+    --label test_lab.png \
+    --output result.png
+```
 
-### 4. 自定义配置
+**Arguments:**
+- `--model`: Model type (`unet` / `pspnet` / `deeplabv3`)
+- `--weights`: Path to model weights
+- `--image`: Input image path
+- `--label`: Ground truth label (optional)
+- `--output`: Output filename (default: `output.png`)
 
-修改 `configs/` 目录下的配置文件：
+---
 
-- `dataset_config.py`: 数据集路径、批大小等
-- `model_config.py`: 模型超参数
-- `training_config.py`: 学习率、epoch数等
+## 🏆 Supported Models
 
-## 支持的模型
+### UNet 🏗️
+- **Backbone**: ResNet18 encoder
+- **Key Features**: 
+  - Custom Pyramid Module for multi-scale features
+  - SE Attention for channel-wise refinement
+  - Skip connections for precise localization
+- **Best For**: Tasks requiring accurate boundary detection
+- **Parameters**: ~19.3M
 
-### UNet
-- Backbone: ResNet18
-- 特色: Custom Pyramid Module + SE Attention
-- 适用场景: 需要精确边界定位的任务
+### PSPNet 🌆
+- **Backbone**: ResNet18 encoder
+- **Key Features**:
+  - Pyramid Scene Parsing Module
+  - Global context aggregation
+  - Multi-level feature fusion
+- **Best For**: Scenes requiring global understanding
+- **Parameters**: ~25.2M
 
-### PSPNet
-- Backbone: ResNet18
-- 特色: Pyramid Scene Parsing Module
-- 适用场景: 需要全局上下文信息的任务
+### DeepLabV3 🔬
+- **Backbone**: ResNet18 encoder
+- **Key Features**:
+  - Atrous Spatial Pyramid Pooling (ASPP)
+  - SE Attention mechanism
+  - Multi-scale receptive fields
+- **Best For**: Multi-scale object segmentation
+- **Parameters**: ~15.9M
 
-### DeepLabV3
-- Backbone: ResNet18
-- 特色: ASPP + SE Attention
-- 适用场景: 多尺度目标检测
+---
 
-## 损失函数
+## 📈 Performance Metrics
 
-采用组合损失函数：
-- **Focal Loss**: 处理类别不平衡
-- **Tversky Loss**: 优化分割边界
+### Evaluation Metrics
 
-权重配置可在 `configs/training_config.py` 中调整。
+- **Pixel Accuracy**: Overall classification accuracy (filtered for building classes)
+- **mIoU**: Mean Intersection over Union across all classes
+- **Focal Loss**: Handles class imbalance during training
+- **Dice Loss**: Optimizes segmentation quality
 
-## 评估指标
+### Target Classes
 
-- **Pixel Accuracy**: 像素级准确率（仅统计建筑物相关类别）
-- **mIoU**: 平均交并比
-- **Focal Loss**: Focal损失值
-- **Dice Loss**: Dice损失值
+Primary focus on building damage assessment:
+- Class 2: Building - No Damage
+- Class 3: Building - Minor Damage
+- Class 4: Building - Major Damage
+- Class 5: Building - Destroyed
 
-## 扩展指南
+---
 
-### 添加新模型
+## ⚙️ Configuration
 
-1. 在 `models/layers/` 中实现所需的自定义层
-2. 在 `models/` 下创建新模型文件（如 `new_model.py`）
-3. 在 `models/__init__.py` 中注册新模型
-4. 在 `configs/model_config.py` 中添加配置
+All configurations are centralized in the `configs/` directory.
 
-### 添加新数据集
+### Dataset Configuration (`configs/dataset_config.py`)
 
-1. 在 `modules/datasets.py` 中创建新的Dataset类
-2. 在 `configs/dataset_config.py` 中添加数据路径
-3. 修改数据加载逻辑以适配新数据集的命名规则
+```python
+DATASET_CONFIG = {
+    'train_img_dir': '.../RescueNet/train/train-org-img',
+    'train_mask_dir': '.../RescueNet/train/train-label-img',
+    'test_img_dir': '.../RescueNet/test/test-org-img',
+    'test_mask_dir': '.../RescueNet/test/test-label-img',
+}
 
-### 添加新损失函数
+DATALOADER_CONFIG = {
+    'batch_size': 2,
+    'num_workers': 6,
+    'max_images': 100,  # None for all images
+}
+```
 
-1. 在 `modules/loss.py` 中实现新的Loss类
-2. 在 `modules/trainer.py` 中集成新损失
-3. 在 `configs/training_config.py` 中配置损失权重
+### Training Configuration (`configs/training_config.py`)
 
-## 项目特点
+```python
+TRAINING_CONFIG = {
+    'epochs': 10,
+    'learning_rate': 1e-4,
+    'weight_decay': 1e-4,
+}
 
-✅ **模块化设计**: 模型、训练、评估完全解耦  
-✅ **易于扩展**: 清晰的接口设计，便于添加新组件  
-✅ **配置管理**: 集中化的配置系统  
-✅ **多模型支持**: 内置三种主流分割模型  
-✅ **完整流程**: 涵盖训练、测试、推理全流程  
+LOSS_CONFIG = {
+    'focal_weight': 1.0,
+    'tversky_weight': 1.0,
+    'focal_gamma': 2.0,
+}
+```
 
-## 许可证
+### Model Configuration (`configs/model_config.py`)
 
-本项目仅供学术研究使用。
+```python
+MODEL_CONFIG = {
+    'num_classes': 11,
+    'backbone': 'resnet18',
+    'pretrained': True,
+}
+```
 
-## 联系方式
+---
 
-如有问题，请提交Issue或联系作者。
+## 🔧 Advanced Usage
+
+### Adding a New Model
+
+1. Create custom layers in `models/layers/` if needed
+2. Implement model in `models/new_model.py`
+3. Register in `models/__init__.py`:
+   ```python
+   from models.new_model import NewModel
+   
+   def get_model(model_name, num_classes=11):
+       if model_name == 'new_model':
+           return NewModel(num_classes=num_classes)
+       # ... existing models
+   ```
+4. Add configuration in `configs/model_config.py`
+
+### Adding a New Dataset
+
+1. Create dataset class in `modules/datasets.py`
+2. Update paths in `configs/dataset_config.py`
+3. Adapt file naming convention in `__getitem__()`
+
+### Customizing Loss Functions
+
+1. Implement new loss in `modules/loss.py`
+2. Integrate in `modules/trainer.py`
+3. Configure weights in `configs/training_config.py`
+
+---
+
+## 📚 Documentation
+
+- **[QUICKSTART.md](QUICKSTART.md)**: 5-minute quick start guide
+- **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)**: Detailed architecture explanation
+- **[MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)**: Guide for migrating from old code
+- **[REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md)**: Refactoring overview
+- **[CHECKLIST.md](CHECKLIST.md)**: Project completion checklist
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **Academic Research License**. See the [LICENSE](LICENSE) file for full details.
+
+### Quick Summary
+
+**✅ You CAN:**
+- Use this software for academic research and education
+- Modify the code for your research needs
+- Share modified versions with other researchers
+- Cite this work in your publications
+
+**❌ You CANNOT:**
+- Use this software for commercial purposes
+- Apply for patents based on this code
+- Use it in military or defense applications
+- Remove copyright notices or license terms
+
+**📝 You MUST:**
+- Provide proper attribution in publications
+- Include this license with any distribution
+- Cite the project appropriately (see citation format below)
+
+### Citation
+
+If you use this software in your research, please cite:
+
+``bibtex
+@software{rescuenet_segmentation,
+  title = {RescueNet-Segmentation: Building Damage Assessment via Semantic Segmentation},
+  author = {{RescueNet-Segmentation Contributors}},
+  year = {2026},
+  url = {https://github.com/yourusername/RescueNet-Segmentation},
+  note = {Academic Research License}
+}
+```
+
+---
+
+## 📧 Contact
+
+For questions, suggestions, or collaborations:
+
+- 📬 Submit an [Issue](https://github.com/yourusername/RescueNet-Segmentation/issues)
+- 📧 Contact the author directly
+
+---
+
+## 🙏 Acknowledgments
+
+- **RescueNet Dataset**: For providing high-quality disaster imagery data
+- **PyTorch Team**: For the excellent deep learning framework
+- **Open Source Community**: For various libraries and tools used in this project
+
+---
+
+<div align="center">
+
+**If you find this project helpful, please consider giving it a ⭐ star!**
+
+Made with ❤️ for disaster relief research
+
+</div>
