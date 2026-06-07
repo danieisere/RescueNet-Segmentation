@@ -123,7 +123,6 @@ python verify_refactoring.py
 ## 📊 Dataset
 
 This project uses the **RescueNet** dataset for building damage segmentation.
-Dataset ownership：[RescueNet-A-High-Resolution-Post-Disaster-UAV-Dataset-for-Semantic-Segmentation](https://github.com/BinaLab/RescueNet-A-High-Resolution-Post-Disaster-UAV-Dataset-for-Semantic-Segmentation.git)
 
 ### Dataset Structure
 
