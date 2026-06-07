@@ -222,7 +222,6 @@ python inference.py \
   - SE Attention for channel-wise refinement
   - Skip connections for precise localization
 - **Best For**: Tasks requiring accurate boundary detection
-- **Parameters**: ~19.3M
 
 ### PSPNet 🌆
 - **Backbone**: ResNet18 encoder
@@ -231,7 +230,6 @@ python inference.py \
   - Global context aggregation
   - Multi-level feature fusion
 - **Best For**: Scenes requiring global understanding
-- **Parameters**: ~25.2M
 
 ### DeepLabV3 🔬
 - **Backbone**: ResNet18 encoder
@@ -240,7 +238,6 @@ python inference.py \
   - SE Attention mechanism
   - Multi-scale receptive fields
 - **Best For**: Multi-scale object segmentation
-- **Parameters**: ~15.9M
 
 ---
 
