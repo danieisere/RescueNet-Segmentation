@@ -123,7 +123,6 @@ python verify_refactoring.py
 ## 📊 数据集
 
 本项目使用 **RescueNet** 数据集进行建筑物损坏分割。
-数据集所属：[RescueNet-A-High-Resolution-Post-Disaster-UAV-Dataset-for-Semantic-Segmentation](https://github.com/BinaLab/RescueNet-A-High-Resolution-Post-Disaster-UAV-Dataset-for-Semantic-Segmentation.git)
 
 ### 数据集结构
 
